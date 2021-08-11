@@ -283,10 +283,12 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: false
+      read_time: true
       comments: true
       share: false
       related: false
+      mathjax: true
+      sidebar_main: true
   
   # _pages
   - scope:
