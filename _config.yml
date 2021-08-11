@@ -288,9 +288,6 @@ defaults:
       share: false
       related: true
       mathjax: true
-      sidebar_main: true
-      sidebar:
-      nav: "main" #_data/navigation.yml 에 main 객체가 있다
   
   # _pages
   - scope:
@@ -299,3 +296,6 @@ defaults:
     values:
       layout: single
       author_profile: true
+      sidebar_main: true
+      sidebar:
+      nav: "main" #_data/navigation.yml 에 main 객체가 있다

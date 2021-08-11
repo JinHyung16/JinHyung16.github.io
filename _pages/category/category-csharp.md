@@ -1,7 +1,7 @@
 ---
-title: "C# programming"
+title: "C# 프로그래밍"
 layout: archive
-permalink: categories/c#
+permalink: categories/cpp
 author_profile: true
 sidebar_main: true
 ---
