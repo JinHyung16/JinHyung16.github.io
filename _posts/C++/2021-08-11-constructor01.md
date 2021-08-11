@@ -1,23 +1,49 @@
+---
+layout: tag
+title:  "Constructor Story(01)"
+category: C++
+tag:
+- cpp
+C++: true
+---
+
 ## Study C++ about copy constructor & temporary object
-[생성자/소멸자] 라는 함수는 Caller가 호출해서 생성되는것이 아닌 언어 문법에의해 Call되는 시점이 '알아서' '자동'으로 호출된다 <br>
-호출 When? 생성자-> 인스턴스 선언 or new 사용 / 소멸자-> delete or scope 밖으로 벗어났다 등... <br>
->복사에 관한 C++ style code
-```복사 이야기
-우리는 생성에 대해 아래 두 가지처럼 표현할수있다
-int a(10); // a는 생성되는 것(변수, 인스턴스) 10은 생성되는것에 대한 초기값(상수) <- 나는 '생성'
-int b(a); // 이때 a는 초기값인데 변수(인스턴스)로 이 문장의 의미는 a는 원본 b는 사본이라는 뜻 <- 나는 '복사생성'
+
+> PreView
+
+- [생성자/소멸자] 라는 함수는 Caleer가 호출해서 생성되는 것이 아닌 언어 문법에 의해 Call 되는 시점이 '알아서' '자동으로' 호출 <br>
+- 생성자: 인스턴스 선언 OR new 사용 / 소멸자: delete OR 스코프 끝
+
+>About Copy story
+
+```Copy
+int main(void)
+{
+  int a(10); // C++ Style 초기화 방법
+  int b(a);
+  return 0;
+}
 ```
-### 생성자의 종류 및 특징
-  0. 기본생성자
-  1. 다중 정의된 생성자(매개변수가 있음)
-    1-1. 변환생성자(매개변수가 1개인 특징)-> 형 변환연산자와 엮임
-  2. 복사생성자
-  3. 이동생성자 (복사생성자에서 + r-value 참조를받는 생성자) <br>
-위 종류들의 핵심적인 이론은 '이름이 없는 임시객체'가 문제가 됨-> 코드에서 드러나지 않음을 주의<br>
-### 복사생성자 이야기
-Deep copy vs Shallow copy의 차이를 알자
->코드 예제
-```
+
+- 우리는 생성에 대해 두 가지 코드로 표현 가능
+- int a(10)은 a는 생성되는 것(변수, 인스턴스) 10은 생성되는 것에 대한 초기값(상수) 로 해석 가능 <br>
+- int b(a)는 a는 초기값인데 변수(인스턴스)로 b는사본 a는 원본 이라고 해석되며 이것이 '복상생성'에 시작
+
+> 생성자의 종류 및 특징
+
+0. 기본생성자
+1. 다중 정의된 생성자(매개변수가 있음)
+  1.1 변환생성자(매개변수가 1개인 특징)-> 형 변환연산자와 엮임
+2. 복사생성자
+3. 이동생성자 (복사생성자에서 + r-value 참조를받는 생성자)
+
+- 핵심적인 이론은 '이름이 없는 임시객체'가 문제가 됨-> 코드에서 드러나지 않음을 주의
+
+## 복사생성자 이야기
+
+>Deep copy vs Shallow copy의 차이 예제
+
+``` Copty constructor
 int main(void)
 {
   int nData = 5;
@@ -25,11 +51,16 @@ int main(void)
   int *pB = &nData;
   return 0;
 }
+```
 
-nData라는 '대상체 1개'를 포인터 pA와 pB 2개가 가르키는 상황으로 포인터는 대상체에 대한 [접근,참조]의 수단일뿐 그 대상체 자체가 아니다 <br>
-따라서 수단이 늘었다고해서 대상체가 늘어난 것이 아님 <br>
-if) 대상체를 여러개로 만드는 경우는 'deep copy' / [접근,참조]를 여러개로 만드는 경우는 'shallow copy'
+- nData라는 '대상체 1개'를 포인터 pA, pB 2개가 가르키는 상황
+- 포인터는 대상에 대한 [접근,참조]의 수단일뿐 그 대상이 아님
+- 따라서 수단이 늘었다고해서 대상이 늘어난 것은 아님을 기억
+- 대상을 여러개로 만드는경우 'Deep copy' [접근,참조]의 수단을 여러개로 만드는 경우 'Shallow copy'
 
+>deep copy와 shallow copy 둘다 있는 예제
+
+``` Copy constructor
 int main(void)
 {
   int *pA = new int(5);
@@ -42,12 +73,14 @@ int main(void)
   delete pB;
   return 0;
 }
-pB = new  int(*pA)가 왜 deep copy일까?
-*pA는 5를 인스턴스화 했는데 *pB가 *pA를 인스턴스화 하면서 포인터가 가르키는 대상체가 늘어났으므로 deep copy
-그런데 pB = pA는 그저 *pB가 *pA가 가르키는 대상체를 가르키는 것으로 shallow copy
 ```
+
+- pB = new int(*pA)는 *pA가 5를 인스턴스화 했는데 이 때 pB가 *pA를 인스턴스화 하면서 포인터가 가르키는 대상이 늘었으니 deep copy
+- pB = pA는 그저 *pB가 가르키는 대상이 *pA가 인스턴스화 한 대상을 가르키는 것으로 그저 수단이 늘었으니 shallow copy
+
 >복사가 언제일어나는지 살펴보는 예제
-``` 예제
+
+```copy timing
 class CTest
 {
 public:
@@ -68,13 +101,18 @@ int main(void)
   return 0;
 } <- 소멸자 호출
 ```
+
 >m_Data의 또 다른 출력
-```
+
+``` m_Data의 다른 출력
 class CTest
 {
 public:
   CTest() { std::cout << "CTest()" << std::endl; }
-  CTest(const CTest &ct) { std::cout << "CTest(const CTest &)" << std::endl; }
+  CTest(const CTest &ct) 
+  { 
+    std::cout << "CTest(const CTest &)" << std::endl; 
+  }
   ~CTest() { std::cout <<"~CTest()" << std::endl; }
   
   int m_Data = 0;
@@ -90,11 +128,14 @@ int main(void)
   std::cout << b.m_Data << std::endl; // 0 출력-> 복사생성자 부분을 주석처리후 실행시 300 출력
   return 0;
 } <- 소멸자 호출
-복사생성자를 주석처리하지 않고 출력하면 왜 b.m_Data는 값이 다를까? 
- -> 복사생성자가 호출되는 지점을보면 간단하다 a.m_Data를 바꾼후 b의 복사생성자가 호출되었기 때문이다
 ```
->m_Data의 또 다른 출력
-```
+
+- Q) 복사 생성자를 주석처리하지 않고 출력시 b.mData의 값이 다른 이유
+- A) a.m_Data를 300으로 바꾼 후 복사생성자 호출하면 멤버변수는 그 자료내 스코프를 벗어나면 값이 사라지기에 원래 m_Data의 값 0이출력
+
+>this를 이용한 m_Data 출력
+
+```this->m_Data 출력
 class CTest
 {
 public:
@@ -119,11 +160,14 @@ int main(void)
   std::cout << b.m_Data << std::endl; // 300 출력
   return 0;
 } <- 소멸자 호출
-복사생성자 부분에서 this를 이용해 단순 대입복사를 통해 같은 값이 출력됨을 확인가능
-그렇다면 만약 m_Data가 포인터면 어떻게 될까?
 ```
+
+- 복사생성자 부분에서 this를 이용해 단순 대입복사하면 같은 값이 출력
+- 만약 m_Data가 포인터면 어떻게 될까?
+
 >m_Data가 포인터인 경우
-```
+
+``` *m_Data인 경우
 class CTest
 {
 public:
@@ -165,3 +209,10 @@ int main(void)
  -> 컴파일러가 디폴트생성자를 생성할때 포인터에 대해 멤버값 단순 대입 즉 shallow copy를 했음을 알수있음
 따라서 주석처리한 복사생성자에서 코드를 변경시켜 주석 해제후 실행하면 잘 실행됨 -> deep copy를 통해 해결
 ```
+
+- 복사생성자 주석을 풀고 프로그램을 실행시켜보자
+- 실행시 프로그램이 죽는다 디버깅 모드로 보면 delete m_Data에서 죽는게 확인 가능
+- this->m_Data = ct.m_Data 연산이 일어나서 이미 delte 된 데이터를 또 지우려 했기에 죽는거다
+- Q) 복사 생성자부분을 주석처리하면 왜 실행될까?
+- A) 컴파일러가 default 생성자 생성시 포인터에 대해 멤버값 단순 대입 즉 shallow copy를 했음을 알 수 있음
+- 따라서 복사생성자에서 코드를 변화시킨 부분의 주석을 해제해 실형시 deep copy가 일어나 문제가 해결된다
