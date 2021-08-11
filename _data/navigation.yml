@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "About_Ver(test)"
+    url : /about/
   - title: "Category"
     url: /categories/
   - title: "Tag"
