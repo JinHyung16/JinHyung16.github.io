@@ -1,6 +1,5 @@
 <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
 
-{% assign navigation = site.data.navigation[include.nav] %}
 {% assign sum = site.posts | size %}
 
 <nav class="nav__list">
