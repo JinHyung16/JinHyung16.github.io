@@ -1,9 +1,9 @@
 ---
-title: "C++ programming"
+title: "unity project"
 layout: archive
-permalink: categories/cpp
+permalink: categories/unity
 author_profile: true
-sidebar_main: true
+sidebar: true
 ---
 
 
