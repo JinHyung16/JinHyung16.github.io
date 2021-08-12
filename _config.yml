@@ -289,7 +289,6 @@ defaults:
       related: true
       mathjax: true
       sidebar_main: true
-        nav: "main"
   
   # _pages
   - scope:
