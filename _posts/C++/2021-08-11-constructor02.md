@@ -1,10 +1,24 @@
+---
+layout: tag
+title:  "Constructor Story(02)"
+category: C++
+tag:
+- cpp
+C++: true
+---
+
 ## Study C++ about copy constructor & temporary object
-### 대입 연산자 이야기
-연산자 Overloading-> C++에서 연산자를 함수형태로 사용가능 <br>
-대입 연산자: □(l-value) = △(r-value)에서 l-value에는 locator가 r-value에는 변수,상수 등 옴 <br>
-즉 왼쪽에선 Overwrite가 오른쪽에선 read가 일어남 <br>
->연산자 
-```
+
+## 대입 연산자 이야기
+
+- operator Overloading은 C++에서 연산자를 함수형태로 사용가능
+- 대입연산자 [l-value = r-value] 형태
+- l-value에는 locator가 r-value에는 변수, 상수 등
+- 즉 왼쪽에선 Overwrite가 오른쪽에선 read가 일어남
+
+>operator 예제
+
+```대입연산자 test
 class CTest
 {
 public:
@@ -28,7 +42,8 @@ public:
     *m_Data = nParam;
   }
   int GetData() { return *m_Data; }
-  CTest& operator =(const CTest &ct) // 복사생성를 정의하는 클래스가 있으면 단순대입연산자도 무조건 재정의하기
+  // 복사생성를 정의하는 클래스는 단순대입연산자도 무조건 재정의
+  CTest& operator =(const CTest &ct) //단순 대입연산자 재정의부분
   {
     *m_Data = ct.m_Data;
     return *this;
@@ -48,11 +63,15 @@ int main(void)
   std::cout << b.GetData() << std::endl;
   return 0;
 }
-실행시 프로그램이 죽는데 디버깅하면 delete m_Data에서 문제가 생김
- -> operator를 만들어서 해결
 ```
-### 묵시적 변환 이야기(어려움!!)
-```
+
+- 단순 대입연산자 재정의 부분을 주석처리후 실행시 프로그램이 죽는데 디버깅 해보면 delet m_Data에서 문제가 생김을 알 수 있음
+
+## Implicit conversion story(어려움!!)
+
+> 묵시적(암시적) 형변환 예제
+
+```implicit conversion test
 class CTest
 {
 public:
@@ -105,10 +124,13 @@ int main(void)
   TestFunc(5); // 에러가 나야하는데 실행됨
   return 0;
 }
-각각 결과는 주석을 풀고 걸면서 확인해보길
 ```
->변환생성자의 무서움 확인하기
-```
+
+- 각각 결과는 주석을 걸고 풀면서 확인하기
+
+>Conversion constructor 무서움 확인 예제
+
+```conversion constructor
 class CTest
 {
 public:
@@ -155,15 +177,24 @@ int main(void)
   TestFunc(5);
   return 0;
 }
-if) int에 대한 참조자를 선언하면 int를 줘야한다-> int nData; int &rData =nData; 이런 형식으로 줘야한다
-TestFunc(5)를 풀면 const CTest &param = 5 라고 준건데 좌우의 자료형이 다른데 오류가 안난다
- -> 컴파일러가 알아서 맞춤 실행해보면 객체를 하나 만들어서 주는것이 보인다
- -> TestFunc(CTest(5)); 이렇게 준거랑 동일
-CTest (10); 이렇게 작성해서 실행된다-> main에 넣어서 확인해보기
-위 코드가 실행되는 이유는 변환생성자때문-> 막기위해 변환생성자 앞에 explicit 붙여주기
 ```
+
+- int에 대한 참조자 선언하면 int를 줘야한다 (아래 코드 확인)
+
+``` 같은 type넘기는 예제
+int nData;
+int &rData = nData;
+```
+
+- 그러나 TestFunc(5)를 풀면 const CTest &param = 5라고 준건데 좌 우의 자료형이 다른데 오류가 발생하지 않는다.
+- 컴파일러가 알아서 맞춤 객체를 하나 만들어서 주는것을 알 수 있다
+- TestFunc(CTest(5)); 이렇게 넘겨준거와 동일
+- CTest(10)은 작동이 되는데 main에 넣어 확인해보자
+- 작동하는 이유는 변환생성자 때문인데 이를 막기위해선 변환생성자 앞에 explicit 붙여주자
+
 >허용되는 변환이야기
-```
+
+```allow conversion 예제
 class CTest
 {
 public:
@@ -197,7 +228,7 @@ public:
     *m_Data = ct.m_Data;
     return *this;
   }
-  operator int(void) // 형변환 추가 
+  operator int(void) // 형변환 operator 추가
   {
     return *m_Data;
   }
@@ -214,5 +245,10 @@ int main(void)
 }
 main에서 주석된 부분이 실행되기 위해선 형변환 operator를 넣어준다
 ```
-지금까지의 핵심은 변환 생성자 정의는 'explicit 변환생성자'로 정의하기 <br>
-operator (자료형)형식을 통해 형 변환도 가능 역시 앞에 explicit붙여서 사용자코드 측에서 혼란을 줄여주자 <br>
+
+- main 에서 주석된 부분이 실행되기 위해선 형변환 operator를 넣어준다
+
+>핵심 정리
+
+- conversion constructor 정의는 'explicit conversion constructor로 정의하자
+- operator (자료형) 형식을 통해 형변환도 가능함 역시 앞에 explicit 키워드 붙여 사용자코드에서 발생할 혼란을 줄여주자
