@@ -41,7 +41,7 @@ C++: true
 
 > r-value 예제
 
-``` r-value &&
+```cpp
 void testFunc(int& value) 
 {
     std::cout << "testFunc(int&)" << endl;

@@ -18,7 +18,7 @@ C++: true
 
 >operator 예제
 
-```대입연산자 test
+```cpp
 class CTest
 {
 public:
@@ -71,7 +71,7 @@ int main(void)
 
 > 묵시적(암시적) 형변환 예제
 
-```implicit conversion test
+```cpp
 class CTest
 {
 public:
@@ -130,7 +130,7 @@ int main(void)
 
 >Conversion constructor 무서움 확인 예제
 
-```conversion constructor
+```cpp
 class CTest
 {
 public:
@@ -181,7 +181,7 @@ int main(void)
 
 - int에 대한 참조자 선언하면 int를 줘야한다 (아래 코드 확인)
 
-``` 같은 type넘기는 예제
+```cpp
 int nData;
 int &rData = nData;
 ```
@@ -194,7 +194,7 @@ int &rData = nData;
 
 >허용되는 변환이야기
 
-```allow conversion 예제
+```cpp
 class CTest
 {
 public:
@@ -243,7 +243,6 @@ int main(void)
   // std::cout << (int)a << std::endl; // 이것도 실행되면 좋을텐데...
   return 0;
 }
-main에서 주석된 부분이 실행되기 위해선 형변환 operator를 넣어준다
 ```
 
 - main 에서 주석된 부분이 실행되기 위해선 형변환 operator를 넣어준다

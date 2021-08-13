@@ -17,7 +17,7 @@ C++: true
 
 > 복사 생성자의 또 다른 이야기
 
-``` copy constructor
+```cpp
 class CTest
 {
 public:

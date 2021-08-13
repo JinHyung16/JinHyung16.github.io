@@ -13,7 +13,7 @@ C++: true
 
 > 예제로 생각해보기 (이해가능하면 하기)
 
-```test
+```cpp
 class
 {
 public:
@@ -41,7 +41,7 @@ int main(void)
 
 > temporary object 쉽게 설명 예제
 
-``` temporary object
+```cpp
 int main(void)
 {
     int a;
@@ -58,7 +58,7 @@ int main(void)
 
 > temporary object 깊게
 
-``` temporary object
+```cpp
 class CMData
 {
     // 어떤 내용
@@ -81,7 +81,7 @@ int main(void)
 
 > 메모리로 보는 직관적인 이해
 
-``` CMyData가 아닌 MyImage일때
+```cpp
 class MyImage
 {
     // 영상 데이터 로딩하는 코드

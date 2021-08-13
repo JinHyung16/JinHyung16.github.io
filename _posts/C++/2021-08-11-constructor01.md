@@ -16,7 +16,7 @@ C++: true
 
 >About Copy story
 
-```Copy
+```cpp
 int main(void)
 {
   int a(10); // C++ Style 초기화 방법
@@ -43,7 +43,7 @@ int main(void)
 
 >Deep copy vs Shallow copy의 차이 예제
 
-``` Copty constructor
+```cpp
 int main(void)
 {
   int nData = 5;
@@ -60,7 +60,7 @@ int main(void)
 
 >deep copy와 shallow copy 둘다 있는 예제
 
-``` Copy constructor
+```cpp
 int main(void)
 {
   int *pA = new int(5);
@@ -80,7 +80,7 @@ int main(void)
 
 >복사가 언제일어나는지 살펴보는 예제
 
-```copy timing
+```cpp
 class CTest
 {
 public:
@@ -104,7 +104,7 @@ int main(void)
 
 >m_Data의 또 다른 출력
 
-``` m_Data의 다른 출력
+```cpp
 class CTest
 {
 public:
@@ -135,7 +135,7 @@ int main(void)
 
 >this를 이용한 m_Data 출력
 
-```this->m_Data 출력
+```cpp
 class CTest
 {
 public:
@@ -165,9 +165,9 @@ int main(void)
 - 복사생성자 부분에서 this를 이용해 단순 대입복사하면 같은 값이 출력
 - 만약 m_Data가 포인터면 어떻게 될까?
 
->m_Data가 포인터인 경우
+>*m_Data인 경우
 
-``` *m_Data인 경우
+```cpp
 class CTest
 {
 public:
