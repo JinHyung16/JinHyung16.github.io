@@ -3,8 +3,8 @@ title: "unity project"
 layout: archive
 permalink: categories/unity
 author_profile: true
-sidebar: true
 sidebar_main: true
+type: page
 ---
 
 
