@@ -289,7 +289,7 @@ defaults:
       related: true
       mathjax: true
       sidebar_main: true
-  
+      
   # _pages
   - scope:
       path: "_pages"
