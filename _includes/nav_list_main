@@ -23,7 +23,7 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[] == "unity" %}
+                    {% if category[0] == "unity" %}
                         <li><a href="/categories/stl" class="">Unity project ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
@@ -31,14 +31,14 @@
         <span class="nav__sub-title">Coding Test</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Algorithm" %}
+                    {% if category[0] == "algorithm" %}
                         <li><a href="/categories/algorithm" class="">알고리즘 구현 (with C++) ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
+                    {% if category[0] == "algorith_solve" %}
                         <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
