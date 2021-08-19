@@ -288,6 +288,7 @@ defaults:
       share: false
       related: true
       mathjax: true
+      sidebar_main: true
       
   # _pages
   - scope:
@@ -298,4 +299,3 @@ defaults:
       author_profile: true
       sidebar:
         nav: "main"
-      sidebar_main: true
