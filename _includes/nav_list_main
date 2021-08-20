@@ -23,7 +23,7 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "C sharp" %}
+                    {% if category[0] == "Csharp" %}
                         <li><a href="/categories/unity" class="">C#_study ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
