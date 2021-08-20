@@ -1,5 +1,5 @@
 ---
-title: "C++ programming"
+title: "C++ Study"
 layout: archive
 permalink: categories/cpp
 author_profile: true
