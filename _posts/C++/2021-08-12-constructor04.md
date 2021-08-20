@@ -6,7 +6,6 @@ tag:
 - cpp
 C++: true
 ---
-
 ## Study C++ about copy constructor & temporary object
 
 *constructor(03)강의 temporary object 꼭 보기* 

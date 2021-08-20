@@ -6,7 +6,6 @@ tag:
 - cpp
 C++: true
 ---
-
 ## Study about lambda function & STL/function object
 
 > 함수호출 연산자 예제

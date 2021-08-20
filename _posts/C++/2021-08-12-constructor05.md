@@ -6,7 +6,6 @@ tag:
 - cpp
 C++: true
 ---
-
 ## Study C++ about copy constructor & temporary object
 
 *Constructor Story(01) 강의와 연관*
@@ -57,8 +56,7 @@ int main(void)
 ## Move constructor Story
 
 - deep copy를 하기 위해선 인스턴스 a가 내부적으로 *p를 갖고있을때 *p가 가르키는 대상의 용량이 10MB고, 인스턴스 b를 만들면 b에대한 내부적인 *p가 가르키는 대상도 10MB가 생겨 메모리가 순간적으로 20MB까지 올라간다.
-- 메모리를 획기적으로 줄이는 방법으로 
-b 내부 *p가 가르키는 걸 a 내부 *p가 가르키는 대상으로 바꿔주면 된다 (shallow copy가 아닌가?)
+- 메모리를 획기적으로 줄이는 방법으로 b 내부 *p가 가르키는 걸 a 내부 *p가 가르키는 대상으로 바꿔주면 된다 (shallow copy가 아닌가?)
 - 언제 shallow copy를 하냐 a내부 *p가 가르키는 대상이 소멸하기전에 b 내부 *p가 해당 대상을 가로채기하고 a내부 *p = nullptr로 바꿔준다.
 - 이것이 이동생성자에서 move semantics
 - CTest(const CTest && ct) 형태

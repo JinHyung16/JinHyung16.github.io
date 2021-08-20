@@ -6,8 +6,7 @@ tag:
 - cpp
 C++: true
 ---
-
-## Study C++ about copy constructor & temporary object
+## Study about copy constructor & temporary object
 
 > PreView
 

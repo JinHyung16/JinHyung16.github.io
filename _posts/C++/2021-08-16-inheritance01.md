@@ -6,7 +6,6 @@ tag:
 - cpp
 C++: true
 ---
-
 ## Study about inheritance
 
 ## inheritance story
