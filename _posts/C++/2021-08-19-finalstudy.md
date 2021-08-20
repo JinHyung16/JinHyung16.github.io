@@ -1,10 +1,10 @@
 ---
-layout: tag
-title:  "Lambda story(01)"
-category: C++
+layout: single
+title: "Lambda story(01)"
+categories:
+- Cpp
 tag:
-- cpp
-C++: true
+- Cpp
 ---
 ## Study about lambda function & STL/function object
 

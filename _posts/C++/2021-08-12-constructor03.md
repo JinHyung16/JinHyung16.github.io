@@ -1,10 +1,10 @@
 ---
 layout: tag
-title:  "Constructor Story(03)"
-category: C++
+title: "Constructor Story(03)"
+categories:
+- Cpp
 tag:
-- cpp
-C++: true
+- Cpp
 ---
 ## Study C++ about copy constructor & temporary object
 

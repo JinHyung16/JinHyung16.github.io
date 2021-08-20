@@ -1,10 +1,10 @@
 ---
 layout: tag
-title:  "Inheritance story(03)"
-category: C++
+title: "Inheritance story(03)"
+categories:
+- Cpp
 tag:
-- cpp
-C++: true
+- Cpp
 ---
 ## Study about inheritance (심화편 시작)
 
