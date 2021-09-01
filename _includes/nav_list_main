@@ -24,11 +24,11 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Csharp" %}
-                        <li><a href="/categories/Csharp" class="">C#_study ({{category[1].size}})</a></li>
+                        <li><a href="/categories/csharp" class="">C#_study ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Coding Test</span>
+        <span class="nav__sub-title">GameProject</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "unity" %}
