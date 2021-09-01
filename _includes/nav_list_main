@@ -31,7 +31,7 @@
         <span class="nav__sub-title">GameProject</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "unity" %}
+                    {% if category[0] == "Unity" %}
                         <li><a href="/categories/unity" class="">unity_project ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
